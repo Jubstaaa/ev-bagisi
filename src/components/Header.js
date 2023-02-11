@@ -39,12 +39,11 @@ function Header({ all, bank, panel, setPanel, auth, setAuth, setReset }) {
             Panel
           </a>
         )}
-
+        <a href="#my-modal-5" className="btn btn-primary text-white">
+          Kullanıcı Ekle
+        </a>
         {auth && panel && (
           <>
-            <a href="#my-modal-5" className="btn btn-primary text-white">
-              Kullanıcı Ekle
-            </a>
             <a
               onClick={() => {
                 logout(setAuth);

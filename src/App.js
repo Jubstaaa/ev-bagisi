@@ -6,7 +6,7 @@ import AddItem from "./components/AddItem";
 import Pay from "./components/Pay";
 import Login from "./components/Login";
 import Panel from "./components/Panel";
-
+import AddUser from "./components/AddUser";
 function App() {
   const [users, setUsers] = useState([]);
   const [all, setAll] = useState(0);
@@ -157,6 +157,7 @@ function App() {
           <List all={all} bank={bank} items={items} />
           <AddItem />
           <Pay users={users} />
+          <AddUser />
         </>
       )}
     </div>
