@@ -16,8 +16,8 @@ function Panel({ reset }) {
   return (
     <div>
       <PaymentsTable users={users} reset={reset} />
-      <UsersTable users={users} reset={reset} />
       <ItemsTable />
+      <UsersTable users={users} reset={reset} />
     </div>
   );
 }
