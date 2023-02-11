@@ -128,7 +128,8 @@ export const logout = async (setAuth) => {
     });
 };
 
-export const uploadFile = async (e, setFile) => {
+export const uploadFile = async (e, setFile, setLoading) => {
+  setLoading(true);
   const file = e.target.files[0];
   if (!file) {
     return;
@@ -147,6 +148,7 @@ export const uploadFile = async (e, setFile) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setFile(downloadURL);
+          setLoading(false);
         });
       }
     );

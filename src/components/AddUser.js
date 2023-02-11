@@ -4,9 +4,10 @@ import { uploadFile, setUser } from "../firebaseConfig";
 function AddUser() {
   const [name, setName] = useState("");
   const [file, setFile] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleFile = (e) => {
-    uploadFile(e, setFile);
+    uploadFile(e, setFile, setLoading);
   };
   const handleSubmit = () => {
     setUser(name, file);
@@ -53,6 +54,7 @@ function AddUser() {
               href="#"
               onClick={handleSubmit}
               className="btn btn-primary text-white"
+              disabled={loading}
             >
               Ekle
             </a>
