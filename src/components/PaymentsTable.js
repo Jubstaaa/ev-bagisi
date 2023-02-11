@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { getPayment, updateUser, updatePayment } from "../firebaseConfig";
+import {
+  getPayment,
+  updateUser,
+  updatePayment,
+  setLogs,
+} from "../firebaseConfig";
 
 function PaymentsTable({ users, reset }) {
   const [payments, setPayments] = useState([]);
@@ -8,12 +13,13 @@ function PaymentsTable({ users, reset }) {
     getPayment().then((data) => {
       setPayments(data);
     });
-  }, [{ reset }]);
+  }, [reset]);
 
   const handleSubmit = (payment) => {
     const user = users.find((user) => user.name === payment.name);
     updateUser(user, payment);
     updatePayment(payment);
+    setLogs(payment);
   };
 
   return (

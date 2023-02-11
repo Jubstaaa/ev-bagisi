@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUsers, getItems } from "./firebaseConfig";
+import { getUsers, getItems, getLogs } from "./firebaseConfig";
 import Header from "./components/Header";
 import List from "./components/List";
 import AddItem from "./components/AddItem";
@@ -17,6 +17,7 @@ function App() {
   const [auth, setAuth] = useState(false);
   const [items, setItems] = useState([]);
   const [reset, setReset] = useState(false);
+  const [logs, setLogs] = useState([]);
 
   useEffect(() => {
     let all = 0;
@@ -40,6 +41,9 @@ function App() {
         }
       });
       setBank(all - spent);
+    });
+    getLogs().then((data) => {
+      setLogs(data);
     });
   }, [reset]);
 
@@ -81,6 +85,25 @@ function App() {
               </svg>
               <span>Ayın Bağışcısını evin duvarına kaplama yaptırıyoruz.</span>
             </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>Olay</th>
+                  <th>Tarih</th>
+                </tr>
+              </thead>
+              <tbody>
+                {logs.map((log) => (
+                  <tr>
+                    <td>{log.log}</td>
+                    {/* <td>{new Date(log.date)}</td> */}
+                    {console.log(log.date.toISOString())}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
           <div className="flex flex-col justify-start items-center gap-5">
             <div className="flex flex-wrap xl:flex-nowrap justify-center sm:justify-between items-center w-full gap-5 md:gap-0 lg:gap-5">

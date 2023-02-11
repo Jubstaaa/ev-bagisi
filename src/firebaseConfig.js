@@ -18,12 +18,12 @@ import {
 } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDq_CyxZVQBj629Hzko69PnHLICrVjJ2Tw",
-  authDomain: "ayin-bagisi-79b5f.firebaseapp.com",
-  projectId: "ayin-bagisi-79b5f",
-  storageBucket: "ayin-bagisi-79b5f.appspot.com",
-  messagingSenderId: "1032407579306",
-  appId: "1:1032407579306:web:334743d7475f09cc802ed3",
+  apiKey: "AIzaSyDzZ5G23LLVOv-Rs0xQshHuMfvwkdPlDMc",
+  authDomain: "jubstaa-home.firebaseapp.com",
+  projectId: "jubstaa-home",
+  storageBucket: "jubstaa-home.appspot.com",
+  messagingSenderId: "1009484786605",
+  appId: "1:1009484786605:web:1f13fb367090b841118f24",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -48,6 +48,15 @@ export const getItems = async () => {
     items.push({ ...doc?.data(), id: doc.id });
   });
   return items;
+};
+
+export const getLogs = async () => {
+  const logs = [];
+  const logsRef = await getDocs(query(collection(db, "logs")));
+  logsRef.forEach((doc) => {
+    logs.push({ ...doc?.data(), id: doc.id });
+  });
+  return logs;
 };
 
 export const setItems = async (name, price) => {
@@ -95,6 +104,13 @@ export const setPayment = async (name, price, type) => {
   });
 };
 
+export const setLogs = async (payment) => {
+  await addDoc(collection(db, "logs"), {
+    log: `${payment.name} tarafından ${payment.type} yöntemiyle ${payment.price} tutarında bağış yapıldı. Allah razı olsun!`,
+    date: new Date(),
+  });
+};
+
 export const getPayment = async () => {
   const payments = [];
   const paymentsRef = await getDocs(query(collection(db, "payment")));
@@ -138,7 +154,7 @@ export const uploadFile = async (e, setFile, setLoading) => {
   } else {
     const storageRef = ref(
       storage,
-      `gs://ayin-bagisi-79b5f.appspot.com/${file.name}`
+      `gs://jubstaa-home.appspot.com/${file.name}`
     );
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on(
