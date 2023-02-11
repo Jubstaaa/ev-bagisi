@@ -7,6 +7,7 @@ import Pay from "./components/Pay";
 import Login from "./components/Login";
 import Panel from "./components/Panel";
 import AddUser from "./components/AddUser";
+import { Timestamp } from "firebase/firestore";
 function App() {
   const [users, setUsers] = useState([]);
   const [all, setAll] = useState(0);
@@ -43,7 +44,7 @@ function App() {
       setBank(all - spent);
     });
     getLogs().then((data) => {
-      setLogs(data);
+      setLogs(data.sort((a, b) => b.date.seconds - a.date.seconds));
     });
   }, [reset]);
 
@@ -86,7 +87,7 @@ function App() {
               <span>Ayın Bağışcısını evin duvarına kaplama yaptırıyoruz.</span>
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overflow-y-scroll h-56">
             <table className="table w-full">
               <thead>
                 <tr>
@@ -98,8 +99,7 @@ function App() {
                 {logs.map((log) => (
                   <tr>
                     <td>{log.log}</td>
-                    {/* <td>{new Date(log.date)}</td> */}
-                    {console.log(log.date.toISOString())}
+                    <td>{log.date.toDate().toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>

@@ -106,7 +106,7 @@ export const setPayment = async (name, price, type) => {
 
 export const setLogs = async (payment) => {
   await addDoc(collection(db, "logs"), {
-    log: `${payment.name} tarafından ${payment.type} yöntemiyle ${payment.price} tutarında bağış yapıldı. Allah razı olsun!`,
+    log: `${payment.name} tarafından ${payment.type} yöntemiyle ${payment.price} TL tutarında bağış yapıldı. Allah razı olsun!`,
     date: new Date(),
   });
 };
