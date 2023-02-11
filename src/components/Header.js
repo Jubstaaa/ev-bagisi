@@ -60,7 +60,7 @@ function Header({ all, bank, panel, setPanel, auth, setAuth, setReset }) {
           }}
           className="btn"
         >
-          Yenile
+          Verileri Yenile
         </button>
       </div>
     </div>
