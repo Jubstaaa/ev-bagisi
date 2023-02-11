@@ -101,7 +101,7 @@ function App() {
                 </div>{" "}
               </div>
             </div>
-            <div className="flex flex-wrap justify-between items-center w-full gap-5">
+            <div className="flex flex-wrap justify-start items-center w-full gap-5">
               {users.map((user, i) => (
                 <div
                   key={user.id}
