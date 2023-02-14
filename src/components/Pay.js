@@ -15,7 +15,7 @@ function Pay({ users }) {
     name && price && setPayment(name, price, "nakit");
     setName("");
     setPrice("");
-    fetch(`https://api.telegram.org/bot5995427299:AAFgoj09zStEdJG8lAPAh0qZgbARwccW0CQ/sendMessage?chat_id=1148020002&text="${name} tarafından nakit türünde ${price} TL ödeme bildirimi yapıldı."
+    fetch(`https://api.telegram.org/bot5995427299:AAFgoj09zStEdJG8lAPAh0qZgbARwccW0CQ/sendMessage?chat_id=1148020002&text="${name} tarafından nakit türünde ${price} TL ödeme bildirimi yapıldı.")
   };
   return (
     <div className="modal" id="my-modal-1">
