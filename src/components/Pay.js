@@ -10,7 +10,7 @@ function Pay({ users }) {
     setName("");
     setPrice("");
     fetch(
-      `https://api.telegram.org/bot5995427299:AAFgoj09zStEdJG8lAPAh0qZgbARwccW0CQ/sendMessage?chat_id=1148020002&text="${name} tarafından havale türünde ${price} TL ödeme bildirimi yapıldı."`
+      `https://api.telegram.org/bot6284984742:AAHpBMorFyHz-UpvsoV0WIxm44Qeg_kx0Mw/sendMessage?chat_id=1148020002&text="${name} tarafından havale türünde ${price} TL ödeme bildirimi yapıldı."`
     );
   };
   const handleNakit = () => {
@@ -18,7 +18,7 @@ function Pay({ users }) {
     setName("");
     setPrice("");
     fetch(
-      `https://api.telegram.org/bot5995427299:AAFgoj09zStEdJG8lAPAh0qZgbARwccW0CQ/sendMessage?chat_id=1148020002&text="${name} tarafından nakit türünde ${price} TL ödeme bildirimi yapıldı."`
+      `https://api.telegram.org/bot6284984742:AAHpBMorFyHz-UpvsoV0WIxm44Qeg_kx0Mw/sendMessage?chat_id=1148020002&text="${name} tarafından nakit türünde ${price} TL ödeme bildirimi yapıldı."`
     );
   };
   return (
