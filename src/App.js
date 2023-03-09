@@ -69,24 +69,6 @@ function App() {
         </>
       ) : (
         <>
-          <div className="alert alert-info shadow-lg mb-5">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="stroke-current flex-shrink-0 w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-              <span>Ayın Bağışcısını evin duvarına kaplama yaptırıyoruz.</span>
-            </div>
-          </div>
           <div className="overflow-x-auto overflow-y-scroll h-56">
             <table className="table w-full">
               <thead>
@@ -96,8 +78,8 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {logs.map((log) => (
-                  <tr>
+                {logs.map((log, index) => (
+                  <tr key={index}>
                     <td>{log.log}</td>
                     <td>{log.date.toDate().toLocaleString()}</td>
                   </tr>
@@ -107,7 +89,7 @@ function App() {
           </div>
           <div className="flex flex-col justify-start items-center gap-5">
             <div className="flex flex-wrap xl:flex-nowrap justify-center sm:justify-between items-center w-full gap-5 md:gap-0 lg:gap-5">
-              <div className="bg-base-100 rounded-box col-span-3 row-span-3 mx-2 grid w-72 flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl xl:mx-0 xl:w-1/2 svelte-1n6ue57">
+              <div className="bg-base-100 rounded-box col-span-3 row-span-3 mx-2 grid w-full flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl xl:mx-0">
                 <div className="text-xl font-extrabold">
                   Tüm Zamanların Bağışcısı
                 </div>
@@ -125,24 +107,8 @@ function App() {
                   </div>
                 </div>{" "}
               </div>
-              <div className="bg-base-100 rounded-box col-span-3 row-span-3 mx-2 grid w-72 flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl xl:mx-0 xl:w-1/2 svelte-1n6ue57">
-                <div className="text-xl font-extrabold">Ayın Bağışcısı</div>
-                <div className="avatar">
-                  <div className="w-36 rounded">
-                    <img src={month?.photoUrl} />
-                  </div>
-                </div>{" "}
-                <div className="text-center">
-                  <div className="text-center">
-                    <div className="text-lg font-extrabold">{month?.name}</div>
-                    <h2 className="text-3xl font-extrabold whitespace-nowrap">
-                      {month?.month} TL
-                    </h2>
-                  </div>
-                </div>{" "}
-              </div>
             </div>
-            <div className="flex flex-wrap justify-start items-center w-full gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 w-full gap-5">
               {users.map((user, i) => (
                 <div
                   key={user.id}
@@ -151,35 +117,28 @@ function App() {
                   <div className="text-lg font-extrabold inline-block h-fit px-4">
                     {user.name}
                   </div>
-                  <div className="flex flex-wrap flex-shrink-0 place-items-center items-start gap-4 justify-between ">
-                    <div className="indicator">
+                  <div className="flex flex-wrap sm:flex-nowrap justify-between gap-4">
+                    <div className="indicator gap-3">
                       <span className="indicator-item indicator-top indicator-start badge badge-secondary w-8 h-8">
                         #{i + 1}
                       </span>
-
-                      <div className="avatar flex flex-col">
+                      <div className="avatar">
                         <div className="w-24 rounded-xl">
                           <img src={`${user.photoUrl}`} />
                         </div>
                       </div>
+                      <div className="bg-secondary text-accent-content rounded-box flex items-center p-4 shadow-xl">
+                        <div className="flex-1 px-2">
+                          <h2 className="text-3xl font-extrabold whitespace-nowrap">
+                            {user.donate} TL
+                          </h2>{" "}
+                          <p className="text-sm text-opacity-80 whitespace-nowrap">
+                            Bağış
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="bg-secondary text-accent-content rounded-box flex items-center p-4 shadow-xl">
-                      <div className="flex-1 px-2">
-                        <h2 className="text-3xl font-extrabold whitespace-nowrap">
-                          {user.donate} TL
-                        </h2>{" "}
-                        <p className="text-sm text-opacity-80 whitespace-nowrap">
-                          Tüm Zamanlar
-                        </p>
-                      </div>
-                      <div className="flex-1 px-2">
-                        <h2 className="text-3xl font-extrabold whitespace-nowrap">
-                          {user.month} TL
-                        </h2>{" "}
-                        <p className="text-sm text-opacity-80">Aylık Bağış</p>
-                      </div>
-                    </div>
                     <div className="flex flex-col justify-start items-center space-y-2 ">
                       <div
                         className="radial-progress text-primary"

@@ -28,22 +28,14 @@ function Pay({ users }) {
           <label className="label">
             <span className="label-text">Kişi</span>
           </label>
-          {/* <input
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            value={name}
-            type="text"
-            placeholder="Bilge Kaan Hacımustafaoğlu"
-            className="input input-bordered w-full"
-          /> */}
           <select
             className="select select-ghost w-full"
             onChange={(e) => {
               setName(e.target.value);
             }}
+            defaultValue={""}
           >
-            <option disabled selected>
+            <option value="" disabled>
               Kişi
             </option>
             {users.map((user) => (

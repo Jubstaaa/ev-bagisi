@@ -4,10 +4,9 @@ function List({ all, bank, items }) {
       <div className="modal-box relative">
         <a
           href="#my-modal-2"
-          className="btn btn-sm btn-circle absolute right-12 top-2"
+          className="btn btn-md btn-circle absolute right-12 top-2"
         >
-          {" "}
-          ➕
+          Ekle
         </a>
         <label
           htmlFor="my-modal-3"

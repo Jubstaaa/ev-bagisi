@@ -71,7 +71,6 @@ export const setUser = async (name, photoUrl) => {
   await addDoc(collection(db, "users"), {
     name,
     photoUrl,
-    month: 0,
     donate: 0,
   });
 };
