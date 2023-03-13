@@ -108,7 +108,7 @@ function App() {
                 </div>{" "}
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 w-full gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 w-full gap-5">
               {users.map((user, i) => (
                 <div
                   key={user.id}
